@@ -15,6 +15,10 @@ learnjs.appOnReady = function() {
   learnjs.showView(window.location.hash);
 }
 
+learnjs.landingView = function() {
+  return learnjs.template('landing-view');
+}
+
 learnjs.problemView = function(data) {
   var problemNumber = parseInt(data, 10);
   var view = $('.templates .problem-view').clone();
@@ -47,6 +51,7 @@ learnjs.problemView = function(data) {
 learnjs.showView = function(hash) {
   var routes = {
     '#problem': learnjs.problemView,
+    '#': learnjs.landingView,
     '': learnjs.landingView
   };
 
@@ -85,8 +90,4 @@ learnjs.buildCorrectFlash = function(problemNum) {
     link.text("You're Finished!");
   }
   return correctFlash;
-}
-
-learnjs.landingView = function() {
-  return learnjs.template('landing-view');
 }
